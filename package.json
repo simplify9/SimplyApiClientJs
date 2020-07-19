@@ -35,5 +35,8 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/simplify9/SimplyApiClientJs"
-  }
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
 }
