@@ -14,7 +14,7 @@ jobs:
       uses: actions/setup-node@master
       with:
         node-version: 10.0.0
-    - name: Publish to NPM
+    - name: NPM Install
       run: npm install
     - name: Publish to NPM
       run: npm publish
