@@ -1,5 +1,5 @@
-![](https://github.com/actions/SimplyApiClientJs/workflows/.github/workflows/npm-publish.yml/badge.svg)
 
+[![YourActionName Actions Status](https://github.com/samerzee/SimplyApiClientJs/workflows/npm-publish.yml/badge.svg)](https://github.com/samerzee/SimplyApiClientJs/actions)
 # Introduction 
 A Javascript Api client that is built on top of axios 
 
