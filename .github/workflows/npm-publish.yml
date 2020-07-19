@@ -15,4 +15,6 @@ jobs:
       with:
         node-version: 10.0.0
     - name: Publish to NPM
+      run: npm install
+    - name: Publish to NPM
       run: npm publish
