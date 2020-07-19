@@ -8,7 +8,7 @@ serverAxios.interceptors.request.use(
   async (config) => {
     // Do something before request is sent
     const headers = {
-      Authorization: 'Bearer ',
+      // Authorization: 'Bearer ',
     };
     config.headers = headers;
     config.baseURL = '';
@@ -37,7 +37,7 @@ serverAxios.interceptors.response.use(
   },
 );
 
-export const SimplyGet = async (uri: string): Promise<ApiResponse> => {
+export const SimplyGetAsync = async (uri: string): Promise<ApiResponse> => {
   try {
     const res = await serverAxios.get(uri);
 
@@ -52,7 +52,7 @@ export const SimplyGet = async (uri: string): Promise<ApiResponse> => {
   }
 };
 
-export const SimplyPost = async (uri: string, body: any): Promise<ApiResponse> => {
+export const SimplyPostAsync = async (uri: string, body: any): Promise<ApiResponse> => {
   try {
     const res = await serverAxios.post(uri, { ...body });
 
@@ -66,7 +66,7 @@ export const SimplyPost = async (uri: string, body: any): Promise<ApiResponse> =
     return error.response;
   }
 };
-export const SimplyPut = async (uri: string, body: any): Promise<ApiResponse> => {
+export const SimplyPutAsync = async (uri: string, body: any): Promise<ApiResponse> => {
   try {
     const res = await serverAxios.put(uri, { ...body });
     return {
@@ -80,7 +80,7 @@ export const SimplyPut = async (uri: string, body: any): Promise<ApiResponse> =>
   }
 };
 
-export const SimplyDelete = async (uri: string): Promise<ApiResponse> => {
+export const SimplyDeleteAsync = async (uri: string): Promise<ApiResponse> => {
   try {
     const res = await serverAxios.delete(uri);
     return {
@@ -94,7 +94,7 @@ export const SimplyDelete = async (uri: string): Promise<ApiResponse> => {
   }
 };
 
-export const SimplyPostForm = async (uri: string, formData: any): Promise<ApiResponse> => {
+export const SimplyPostFormAsync = async (uri: string, formData: any): Promise<ApiResponse> => {
   try {
     const res = await serverAxios({
       method: 'post',

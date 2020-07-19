@@ -1,4 +1,5 @@
-import { SimplyGet, SimplyPost, SimplyPut, SimplyDelete, SimplyPostForm } from './Services/Client';
+import { SimplyGetAsync, SimplyPostAsync, SimplyPutAsync, SimplyDeleteAsync, SimplyPostFormAsync } from './Services/Client';
 import ApiResponse from './Models/ApiResponse';
+import RequestOptions from './Models/RequestOptions';
 
-export { ApiResponse, SimplyGet, SimplyPost, SimplyPut, SimplyDelete, SimplyPostForm };
+export { ApiResponse,RequestOptions, SimplyGetAsync, SimplyPostAsync, SimplyPutAsync, SimplyDeleteAsync, SimplyPostFormAsync };
