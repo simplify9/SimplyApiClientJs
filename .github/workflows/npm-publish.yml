@@ -16,6 +16,16 @@ jobs:
         node-version: 12.18.2
     - name: NPM Install
       run: npm install
+
+    - name: "npm/registry setup"
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
+        registry-url: https://npm.pkg.github.com/
+        scope: "@simplify9"
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Publish to NPM
       run: npm publish
       env:
