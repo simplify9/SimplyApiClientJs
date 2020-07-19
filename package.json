@@ -1,5 +1,5 @@
 {
-  "name": "simplyapiclient",
+  "name": "@simplify9/simplyapiclient",
   "version": "1.0.0",
   "description": "",
   "main": "lib/index.js",
@@ -37,6 +37,6 @@
     "url": "git+https://github.com/simplify9/SimplyApiClientJs"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
+    "registry": "https://npm.pkg.github.com/simplify9/"
+  }
 }
