@@ -1,6 +1,3 @@
-
-type RequestOptions = {
-
-}
+type RequestOptions = {};
 
 export default RequestOptions;

@@ -1,5 +1,3 @@
-
-
-test('Get',  () => {
-    //expect('success').toBe('success');
+test('Get', () => {
+  //expect('success').toBe('success');
 });
