@@ -21,8 +21,7 @@
     "axios": "^0.19.2"
   },
   "files": [
-    "lib/**/*",
-    "lib/index.d.ts"
+    "lib/*"
   ],
   "devDependencies": {
     "@types/jest": "^26.0.5",
