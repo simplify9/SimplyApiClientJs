@@ -2,8 +2,8 @@
   "name": "@simplify9/simplyapiclient",
   "version": "1.1.7",
   "description": "",
-  "main": "lib/index.js",
-  "typings": "index",
+  "main": "dist/index.js",
+  "typings": "dist/index",
   "scripts": {
     "test": "jest --config jestconfig.json",
     "build": "tsc",
@@ -21,7 +21,7 @@
     "axios": "^0.19.2"
   },
   "files": [
-    "lib/*"
+    "dist/*"
   ],
   "devDependencies": {
     "@types/jest": "^26.0.5",
