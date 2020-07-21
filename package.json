@@ -2,8 +2,8 @@
   "name": "@simplify9/simplyapiclient",
   "version": "1.1.4",
   "description": "",
-  "main": "lib/index.js",
-  "typings": "lib/index",
+  "main": "index.js",
+  "typings": "index",
   "scripts": {
     "test": "jest --config jestconfig.json",
     "build": "tsc",
