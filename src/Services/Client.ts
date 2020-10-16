@@ -44,7 +44,7 @@ const ClientFactory = (clientConfig: ClientConfig) => {
   const client: IClient = {
     SimplyGetAsync: async (uri: string, options?: RequestOptions): Promise<ApiResponse> => {
       try {
-        var headers = {};
+        let headers = {};
         if (options?.bearer && options?.bearer != null) {
           headers = {
             ...headers,
@@ -53,7 +53,7 @@ const ClientFactory = (clientConfig: ClientConfig) => {
         }
 
         const res = await serverAxios.get(uri, {
-          headers: headers,
+          headers,
         });
 
         return {
@@ -74,7 +74,7 @@ const ClientFactory = (clientConfig: ClientConfig) => {
     },
     SimplyPostAsync: async (uri: string, body: any, options?: RequestOptions): Promise<ApiResponse> => {
       try {
-        var headers = {};
+        let headers = {};
         if (options?.bearer && options?.bearer != null) {
           headers = {
             ...headers,
@@ -107,7 +107,7 @@ const ClientFactory = (clientConfig: ClientConfig) => {
     },
     SimplyPutAsync: async (uri: string, body: any, options?: RequestOptions): Promise<ApiResponse> => {
       try {
-        var headers = {};
+        let headers = {};
         if (options?.bearer && options?.bearer != null) {
           headers = {
             ...headers,
@@ -139,7 +139,7 @@ const ClientFactory = (clientConfig: ClientConfig) => {
     },
     SimplyDeleteAsync: async (uri: string, options?: RequestOptions): Promise<ApiResponse> => {
       try {
-        var headers = {};
+        let headers = {};
         if (options?.bearer && options?.bearer != null) {
           headers = {
             ...headers,
@@ -167,7 +167,7 @@ const ClientFactory = (clientConfig: ClientConfig) => {
     },
     SimplyPostFormAsync: async (uri: string, formData: any, options?: RequestOptions): Promise<ApiResponse> => {
       try {
-        var headers = {};
+        let headers = {};
         if (options?.bearer && options?.bearer != null) {
           headers = {
             ...headers,
