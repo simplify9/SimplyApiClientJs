@@ -4,6 +4,7 @@ import ApiResponse from '../Models/ApiResponse';
 import ClientConfig from '../Models/ClientConfig';
 
 import IClient from '../Models/IClient';
+import RequestOptions from '../Models/RequestOptions';
 
 const ClientFactory = (clientConfig: ClientConfig) => {
   const serverAxios = Axios.create();
@@ -41,9 +42,19 @@ const ClientFactory = (clientConfig: ClientConfig) => {
   );
 
   const client: IClient = {
-    SimplyGetAsync: async (uri: string): Promise<ApiResponse> => {
+    SimplyGetAsync: async (uri: string, options?: RequestOptions): Promise<ApiResponse> => {
       try {
-        const res = await serverAxios.get(uri);
+        var headers = {};
+        if (options?.bearer && options?.bearer != null) {
+          headers = {
+            ...headers,
+            Authorization: `Bearer ${options.bearer}`,
+          };
+        }
+
+        const res = await serverAxios.get(uri, {
+          headers: headers,
+        });
 
         return {
           status: res.status,
@@ -61,9 +72,22 @@ const ClientFactory = (clientConfig: ClientConfig) => {
         };
       }
     },
-    SimplyPostAsync: async (uri: string, body: any): Promise<ApiResponse> => {
+    SimplyPostAsync: async (uri: string, body: any, options?: RequestOptions): Promise<ApiResponse> => {
       try {
-        const res = await serverAxios.post(uri, { ...body });
+        var headers = {};
+        if (options?.bearer && options?.bearer != null) {
+          headers = {
+            ...headers,
+            Authorization: `Bearer ${options.bearer}`,
+          };
+        }
+        const res = await serverAxios.post(
+          uri,
+          { ...body },
+          {
+            headers,
+          },
+        );
 
         return {
           status: res.status,
@@ -81,9 +105,22 @@ const ClientFactory = (clientConfig: ClientConfig) => {
         };
       }
     },
-    SimplyPutAsync: async (uri: string, body: any): Promise<ApiResponse> => {
+    SimplyPutAsync: async (uri: string, body: any, options?: RequestOptions): Promise<ApiResponse> => {
       try {
-        const res = await serverAxios.put(uri, { ...body });
+        var headers = {};
+        if (options?.bearer && options?.bearer != null) {
+          headers = {
+            ...headers,
+            Authorization: `Bearer ${options.bearer}`,
+          };
+        }
+        const res = await serverAxios.put(
+          uri,
+          { ...body },
+          {
+            headers,
+          },
+        );
         return {
           status: res.status,
           succeeded: res.status === 200,
@@ -100,9 +137,18 @@ const ClientFactory = (clientConfig: ClientConfig) => {
         };
       }
     },
-    SimplyDeleteAsync: async (uri: string): Promise<ApiResponse> => {
+    SimplyDeleteAsync: async (uri: string, options?: RequestOptions): Promise<ApiResponse> => {
       try {
-        const res = await serverAxios.delete(uri);
+        var headers = {};
+        if (options?.bearer && options?.bearer != null) {
+          headers = {
+            ...headers,
+            Authorization: `Bearer ${options.bearer}`,
+          };
+        }
+        const res = await serverAxios.delete(uri, {
+          headers,
+        });
         return {
           status: res.status,
           succeeded: res.status === 200,
@@ -119,13 +165,20 @@ const ClientFactory = (clientConfig: ClientConfig) => {
         };
       }
     },
-    SimplyPostFormAsync: async (uri: string, formData: any): Promise<ApiResponse> => {
+    SimplyPostFormAsync: async (uri: string, formData: any, options?: RequestOptions): Promise<ApiResponse> => {
       try {
+        var headers = {};
+        if (options?.bearer && options?.bearer != null) {
+          headers = {
+            ...headers,
+            Authorization: `Bearer ${options.bearer}`,
+          };
+        }
         const res = await serverAxios({
           method: 'post',
           url: uri,
           data: formData,
-          headers: { 'Content-Type': 'multipart/form-data' },
+          headers: { ...headers, 'Content-Type': 'multipart/form-data' },
         });
 
         return {
