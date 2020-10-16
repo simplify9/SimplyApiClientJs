@@ -11,10 +11,10 @@ const ClientFactory = (clientConfig: ClientConfig) => {
 
   serverAxios.interceptors.request.use(
     (config) => {
-      const headers = {
-        // Authorization: 'Bearer ',
-      };
-      config.headers = headers;
+      // const headers = {
+      //   // Authorization: 'Bearer ',
+      // };
+      // config.headers = headers;
       config.baseURL = clientConfig.baseUrl;
 
       return config;
@@ -51,9 +51,15 @@ const ClientFactory = (clientConfig: ClientConfig) => {
             Authorization: `Bearer ${options.bearer}`,
           };
         }
+        if (options?.log)
+        {
+          console.log(`${options?.id}-headers`, headers);
+          console.log(`${options?.id}-uri`, uri);
+        }
 
         const res = await serverAxios.get(uri, {
           headers,
+          
         });
 
         return {
@@ -80,6 +86,10 @@ const ClientFactory = (clientConfig: ClientConfig) => {
             ...headers,
             Authorization: `Bearer ${options.bearer}`,
           };
+        }
+        if (options?.log) {
+          console.log(`${options?.id}-headers`, headers);
+          console.log(`${options?.id}-uri`, uri);
         }
         const res = await serverAxios.post(
           uri,
@@ -114,6 +124,10 @@ const ClientFactory = (clientConfig: ClientConfig) => {
             Authorization: `Bearer ${options.bearer}`,
           };
         }
+        if (options?.log) {
+          console.log(`${options?.id}-headers`, headers);
+          console.log(`${options?.id}-uri`, uri);
+        }
         const res = await serverAxios.put(
           uri,
           { ...body },
@@ -146,6 +160,10 @@ const ClientFactory = (clientConfig: ClientConfig) => {
             Authorization: `Bearer ${options.bearer}`,
           };
         }
+        if (options?.log) {
+          console.log(`${options?.id}-headers`, headers);
+          console.log(`${options?.id}-uri`, uri);
+        }
         const res = await serverAxios.delete(uri, {
           headers,
         });
@@ -173,6 +191,10 @@ const ClientFactory = (clientConfig: ClientConfig) => {
             ...headers,
             Authorization: `Bearer ${options.bearer}`,
           };
+        }
+        if (options?.log) {
+          console.log(`${options?.id}-headers`, headers);
+          console.log(`${options?.id}-uri`, uri);
         }
         const res = await serverAxios({
           method: 'post',

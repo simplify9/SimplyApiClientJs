@@ -1,5 +1,8 @@
 type RequestOptions = {
-    bearer: string;
+    id?: string;
+    bearer?: string;
+    log?: boolean
+    
 };
 
 export default RequestOptions;
