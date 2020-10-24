@@ -13,7 +13,7 @@ const ClientFactory = (clientConfig: ClientConfig) => {
     (config) => {
       let headers = {};
       if (clientConfig.authType &&
-        clientConfig.authType == "bearer" &&
+        clientConfig.authType === "bearer" &&
         clientConfig.getBearer &&
         clientConfig.getBearer() != null) {
         headers = {
