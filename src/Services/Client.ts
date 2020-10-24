@@ -11,10 +11,18 @@ const ClientFactory = (clientConfig: ClientConfig) => {
 
   serverAxios.interceptors.request.use(
     (config) => {
-      // const headers = {
-      //   // Authorization: 'Bearer ',
-      // };
-      // config.headers = headers;
+      let headers = {};
+      if (clientConfig.authType &&
+        clientConfig.authType == "bearer" &&
+        clientConfig.getBearer &&
+        clientConfig.getBearer() != null) {
+        headers = {
+          ...headers,
+          Authorization: `Bearer ${clientConfig.getBearer()}`,
+        };
+      }
+
+      config.headers = headers;
       config.baseURL = clientConfig.baseUrl;
 
       return config;
@@ -44,23 +52,13 @@ const ClientFactory = (clientConfig: ClientConfig) => {
   const client: IClient = {
     SimplyGetAsync: async (uri: string, options?: RequestOptions): Promise<ApiResponse> => {
       try {
-        let headers = {};
-        if (options?.bearer && options?.bearer != null) {
-          headers = {
-            ...headers,
-            Authorization: `Bearer ${options.bearer}`,
-          };
-        }
-        if (options?.log)
+        
+        if (clientConfig.debug)
         {
-          console.log(`${options?.id}-headers`, headers);
           console.log(`${options?.id}-uri`, uri);
         }
 
-        const res = await serverAxios.get(uri, {
-          headers,
-          
-        });
+        const res = await serverAxios.get(uri);
 
         return {
           status: res.status,
@@ -80,23 +78,13 @@ const ClientFactory = (clientConfig: ClientConfig) => {
     },
     SimplyPostAsync: async (uri: string, body: any, options?: RequestOptions): Promise<ApiResponse> => {
       try {
-        let headers = {};
-        if (options?.bearer && options?.bearer != null) {
-          headers = {
-            ...headers,
-            Authorization: `Bearer ${options.bearer}`,
-          };
-        }
-        if (options?.log) {
-          console.log(`${options?.id}-headers`, headers);
+       
+        if (clientConfig.debug) {
           console.log(`${options?.id}-uri`, uri);
         }
         const res = await serverAxios.post(
           uri,
           { ...body },
-          {
-            headers,
-          },
         );
 
         return {
@@ -117,23 +105,12 @@ const ClientFactory = (clientConfig: ClientConfig) => {
     },
     SimplyPutAsync: async (uri: string, body: any, options?: RequestOptions): Promise<ApiResponse> => {
       try {
-        let headers = {};
-        if (options?.bearer && options?.bearer != null) {
-          headers = {
-            ...headers,
-            Authorization: `Bearer ${options.bearer}`,
-          };
-        }
-        if (options?.log) {
-          console.log(`${options?.id}-headers`, headers);
+        if (clientConfig.debug) {
           console.log(`${options?.id}-uri`, uri);
         }
         const res = await serverAxios.put(
           uri,
           { ...body },
-          {
-            headers,
-          },
         );
         return {
           status: res.status,
@@ -153,20 +130,10 @@ const ClientFactory = (clientConfig: ClientConfig) => {
     },
     SimplyDeleteAsync: async (uri: string, options?: RequestOptions): Promise<ApiResponse> => {
       try {
-        let headers = {};
-        if (options?.bearer && options?.bearer != null) {
-          headers = {
-            ...headers,
-            Authorization: `Bearer ${options.bearer}`,
-          };
-        }
-        if (options?.log) {
-          console.log(`${options?.id}-headers`, headers);
+        if (clientConfig.debug) {
           console.log(`${options?.id}-uri`, uri);
         }
-        const res = await serverAxios.delete(uri, {
-          headers,
-        });
+        const res = await serverAxios.delete(uri);
         return {
           status: res.status,
           succeeded: res.status === 200,
@@ -185,22 +152,15 @@ const ClientFactory = (clientConfig: ClientConfig) => {
     },
     SimplyPostFormAsync: async (uri: string, formData: any, options?: RequestOptions): Promise<ApiResponse> => {
       try {
-        let headers = {};
-        if (options?.bearer && options?.bearer != null) {
-          headers = {
-            ...headers,
-            Authorization: `Bearer ${options.bearer}`,
-          };
-        }
-        if (options?.log) {
-          console.log(`${options?.id}-headers`, headers);
+
+        if (clientConfig.debug) {
           console.log(`${options?.id}-uri`, uri);
         }
         const res = await serverAxios({
           method: 'post',
           url: uri,
           data: formData,
-          headers: { ...headers, 'Content-Type': 'multipart/form-data' },
+          headers: { 'Content-Type': 'multipart/form-data' },
         });
 
         return {

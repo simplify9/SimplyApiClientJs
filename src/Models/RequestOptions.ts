@@ -1,7 +1,6 @@
 type RequestOptions = {
     id?: string;
-    bearer?: string;
-    log?: boolean
+    debug?: boolean
     
 };
 
