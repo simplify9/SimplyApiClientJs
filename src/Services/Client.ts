@@ -84,7 +84,7 @@ const ClientFactory = (clientConfig: ClientConfig) => {
         }
         const res = await serverAxios.post(
           uri,
-          { ...body },
+          body,
         );
 
         return {
@@ -110,7 +110,7 @@ const ClientFactory = (clientConfig: ClientConfig) => {
         }
         const res = await serverAxios.put(
           uri,
-          { ...body },
+          body,
         );
         return {
           status: res.status,
