@@ -62,7 +62,7 @@ const ClientFactory = (clientConfig: ClientConfig) => {
 
         return {
           status: res.status,
-          succeeded: res.status === 200,
+          succeeded: res.status >= 200 && res.status < 300,
           data: res.data,
           error: res.statusText,
         };
@@ -70,7 +70,7 @@ const ClientFactory = (clientConfig: ClientConfig) => {
         const r = error.response;
         return {
           status: r.status,
-          succeeded: r.status === 200,
+          succeeded: r.status >= 200 && r.status < 300,
           data: r.data,
           error: r.statusText,
         };
@@ -89,7 +89,7 @@ const ClientFactory = (clientConfig: ClientConfig) => {
 
         return {
           status: res.status,
-          succeeded: res.status === 200,
+          succeeded: res.status >= 200 && res.status < 300,
           data: res.data,
           error: res.statusText,
         };
@@ -97,7 +97,7 @@ const ClientFactory = (clientConfig: ClientConfig) => {
         const r = error.response;
         return {
           status: r.status,
-          succeeded: r.status === 200,
+          succeeded: r.status >= 200 && r.status < 300,
           data: r.data,
           error: r.statusText,
         };
@@ -114,7 +114,7 @@ const ClientFactory = (clientConfig: ClientConfig) => {
         );
         return {
           status: res.status,
-          succeeded: res.status === 200,
+          succeeded: res.status >= 200 && res.status < 300,
           data: res.data,
           error: res.statusText,
         };
@@ -122,7 +122,7 @@ const ClientFactory = (clientConfig: ClientConfig) => {
         const r = error.response;
         return {
           status: r.status,
-          succeeded: r.status === 200,
+          succeeded: r.status >= 200 && r.status < 300,
           data: r.data,
           error: r.statusText,
         };
@@ -136,7 +136,7 @@ const ClientFactory = (clientConfig: ClientConfig) => {
         const res = await serverAxios.delete(uri);
         return {
           status: res.status,
-          succeeded: res.status === 200,
+          succeeded: res.status >= 200 && res.status < 300,
           data: res.data,
           error: res.statusText,
         };
@@ -144,7 +144,7 @@ const ClientFactory = (clientConfig: ClientConfig) => {
         const r = error.response;
         return {
           status: r.status,
-          succeeded: r.status === 200,
+          succeeded: r.status >= 200 && r.status < 300,
           data: r.data,
           error: r.statusText,
         };
@@ -165,7 +165,7 @@ const ClientFactory = (clientConfig: ClientConfig) => {
 
         return {
           status: res.status,
-          succeeded: res.status === 200,
+          succeeded: res.status >= 200 && res.status < 300,
           data: res.data,
           error: res.statusText,
         };
@@ -173,7 +173,7 @@ const ClientFactory = (clientConfig: ClientConfig) => {
         const r = error.response;
         return {
           status: r.status,
-          succeeded: r.status === 200,
+          succeeded: r.status >= 200 && r.status < 300,
           data: r.data,
           error: r.statusText,
         };
