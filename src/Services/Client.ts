@@ -5,7 +5,7 @@ import ClientConfig from '../Models/ClientConfig';
 
 import IClient from '../Models/IClient';
 import RequestOptions from '../Models/RequestOptions';
-import BaseUrl from "./BaseUrlProvider";
+import GetBaseUrl from './BaseUrlProvider';
 
 
 
@@ -26,7 +26,7 @@ const ClientFactory = (clientConfig: ClientConfig) => {
       }
 
       config.headers = headers;
-      config.baseURL = clientConfig.baseUrl ?? BaseUrl;
+      config.baseURL = clientConfig.baseUrl ?? GetBaseUrl();
 
       return config;
     },

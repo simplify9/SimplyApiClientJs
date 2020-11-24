@@ -1,4 +1,6 @@
 let BaseUrl = '';
 
 export const SetBaseUrl = (url: string) => (BaseUrl = url);
-export default BaseUrl;
+const GetBaseUrl = () => BaseUrl;
+
+export default GetBaseUrl;
