@@ -1,5 +1,5 @@
 type ClientConfig = {
-  baseUrl: string;
+  baseUrl?: string;
   getBearer?: () => any;
   refreshAuth?: () => any;
   authType?: 'bearer'

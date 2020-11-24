@@ -5,6 +5,9 @@ import ClientConfig from '../Models/ClientConfig';
 
 import IClient from '../Models/IClient';
 import RequestOptions from '../Models/RequestOptions';
+import BaseUrl from "./BaseUrlProvider";
+
+
 
 const ClientFactory = (clientConfig: ClientConfig) => {
   const serverAxios = Axios.create();
@@ -23,7 +26,7 @@ const ClientFactory = (clientConfig: ClientConfig) => {
       }
 
       config.headers = headers;
-      config.baseURL = clientConfig.baseUrl;
+      config.baseURL = clientConfig.baseUrl ?? BaseUrl;
 
       return config;
     },
