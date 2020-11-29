@@ -70,13 +70,38 @@ const ClientFactory = (clientConfig: ClientConfig) => {
           error: res.statusText,
         };
       } catch (error) {
-        const r = error.response;
-        return {
-          status: r.status,
-          succeeded: r.status >= 200 && r.status < 300,
-          data: r.data,
-          error: r.statusText,
-        };
+
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          const r = error.response;
+         return {
+           status: r.status,
+           succeeded: r.status >= 200 && r.status < 300,
+           data: r.data,
+           error: r.statusText,
+         };
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          return {
+            status: 0,
+            succeeded: false,
+            data: null,
+            error: "no response",
+          };
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          return {
+            status: 0,
+            succeeded: false,
+            data: null,
+            error: error.message,
+          };
+
+        }    
+        
       }
     },
     SimplyPostAsync: async (uri: string, body: any, options?: RequestOptions): Promise<ApiResponse> => {
@@ -97,13 +122,36 @@ const ClientFactory = (clientConfig: ClientConfig) => {
           error: res.statusText,
         };
       } catch (error) {
-        const r = error.response;
-        return {
-          status: r.status,
-          succeeded: r.status >= 200 && r.status < 300,
-          data: r.data,
-          error: r.statusText,
-        };
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          const r = error.response;
+          return {
+            status: r.status,
+            succeeded: r.status >= 200 && r.status < 300,
+            data: r.data,
+            error: r.statusText,
+          };
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          return {
+            status: 0,
+            succeeded: false,
+            data: null,
+            error: 'no response',
+          };
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          return {
+            status: 0,
+            succeeded: false,
+            data: null,
+            error: error.message,
+          };
+        }    
+
       }
     },
     SimplyPutAsync: async (uri: string, body: any, options?: RequestOptions): Promise<ApiResponse> => {
@@ -122,13 +170,36 @@ const ClientFactory = (clientConfig: ClientConfig) => {
           error: res.statusText,
         };
       } catch (error) {
-        const r = error.response;
-        return {
-          status: r.status,
-          succeeded: r.status >= 200 && r.status < 300,
-          data: r.data,
-          error: r.statusText,
-        };
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          const r = error.response;
+          return {
+            status: r.status,
+            succeeded: r.status >= 200 && r.status < 300,
+            data: r.data,
+            error: r.statusText,
+          };
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          return {
+            status: 0,
+            succeeded: false,
+            data: null,
+            error: 'no response',
+          };
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          return {
+            status: 0,
+            succeeded: false,
+            data: null,
+            error: error.message,
+          };
+        }    
+
       }
     },
     SimplyDeleteAsync: async (uri: string, options?: RequestOptions): Promise<ApiResponse> => {
@@ -144,13 +215,36 @@ const ClientFactory = (clientConfig: ClientConfig) => {
           error: res.statusText,
         };
       } catch (error) {
-        const r = error.response;
-        return {
-          status: r.status,
-          succeeded: r.status >= 200 && r.status < 300,
-          data: r.data,
-          error: r.statusText,
-        };
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          const r = error.response;
+          return {
+            status: r.status,
+            succeeded: r.status >= 200 && r.status < 300,
+            data: r.data,
+            error: r.statusText,
+          };
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          return {
+            status: 0,
+            succeeded: false,
+            data: null,
+            error: 'no response',
+          };
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          return {
+            status: 0,
+            succeeded: false,
+            data: null,
+            error: error.message,
+          };
+        }    
+
       }
     },
     SimplyPostFormAsync: async (uri: string, formData: any, options?: RequestOptions): Promise<ApiResponse> => {
@@ -173,13 +267,36 @@ const ClientFactory = (clientConfig: ClientConfig) => {
           error: res.statusText,
         };
       } catch (error) {
-        const r = error.response;
-        return {
-          status: r.status,
-          succeeded: r.status >= 200 && r.status < 300,
-          data: r.data,
-          error: r.statusText,
-        };
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          const r = error.response;
+          return {
+            status: r.status,
+            succeeded: r.status >= 200 && r.status < 300,
+            data: r.data,
+            error: r.statusText,
+          };
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          return {
+            status: 0,
+            succeeded: false,
+            data: null,
+            error: 'no response',
+          };
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          return {
+            status: 0,
+            succeeded: false,
+            data: null,
+            error: error.message,
+          };
+        }    
+
       }
     },
   };
