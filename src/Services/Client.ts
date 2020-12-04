@@ -17,7 +17,7 @@ const ClientFactory = (clientConfig?: ClientConfig) => {
     (config) => {
       let headers = {};
 
-      let clientConfiguration = clientConfig ? clientConfig : GetClientConfig()
+      const clientConfiguration = clientConfig ? clientConfig : GetClientConfig()
 
 
 
@@ -71,7 +71,7 @@ const ClientFactory = (clientConfig?: ClientConfig) => {
         const r = error.response;
 
         if (401 === r.status) {
-          let OnAuthFail = GetOnAuthFail();
+          const OnAuthFail = GetOnAuthFail();
           
           OnAuthFail!();
 
@@ -116,7 +116,7 @@ const ClientFactory = (clientConfig?: ClientConfig) => {
     SimplyGetAsync: async (uri: string, options?: RequestOptions): Promise<ApiResponse> => {
       // try {
 
-        //const res = await serverAxios.get(uri);
+        // const res = await serverAxios.get(uri);
       return await serverAxios.get(uri);
 
       //   return {
@@ -274,7 +274,7 @@ const ClientFactory = (clientConfig?: ClientConfig) => {
       //   }
         return await serverAxios.delete(uri);
         
-      //const res = await serverAxios.delete(uri);
+      // const res = await serverAxios.delete(uri);
       //   return {
       //     status: res.status,
       //     succeeded: res.status >= 200 && res.status < 300,

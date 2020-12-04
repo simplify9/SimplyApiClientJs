@@ -19,7 +19,7 @@ export const SetBaseUrl = (url: string) => (ClientConfig = {
 
 export const SetAuthType = (authType?: 'bearer') => (ClientConfig = {
     ...ClientConfig,
-    authType:authType
+    authType
 });
 
 export const SetGetBearer = (callBack: ()=>any) => (ClientConfig = {
