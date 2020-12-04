@@ -1,9 +1,10 @@
-type ClientConfig = {
+type ClientConfigModel = {
   baseUrl?: string;
   getBearer?: () => any;
   refreshAuth?: () => any;
+  onAuthFail?:() => any
   authType?: 'bearer'
   debug?:boolean
 };
 
-export default ClientConfig;
+export default ClientConfigModel;
