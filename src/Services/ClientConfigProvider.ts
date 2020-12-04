@@ -6,31 +6,34 @@ let ClientConfig: ClientConfigModel = {
 };
 
 export const SetOnAuthFail = (callBack:()=>any) => {ClientConfig = {
-                                                      ...ClientConfig,
+                                                      ...GetClientConfig(),
                                                       onAuthFail: callBack,
                                                     };
 
 };
 
 export const SetBaseUrl = (url: string) => (ClientConfig = {
-    ...ClientConfig,
+    ...GetClientConfig(),
     baseUrl:url
 });
 
-export const SetAuthType = (authType?: 'bearer') => (ClientConfig = {
-    ...ClientConfig,
-    authType
-});
+export const SetAuthType = (authType?: 'bearer') =>
+         (ClientConfig = {
+           ...GetClientConfig(),
+           authType,
+         });
 
-export const SetGetBearer = (callBack: ()=>any) => (ClientConfig = {
-    ...ClientConfig,
-    getBearer:callBack
-});
+export const SetGetBearer = (callBack: () => any) =>
+         (ClientConfig = {
+           ...GetClientConfig(),
+           getBearer: callBack,
+         });
 
-export const SetRefreshAuth = (callBack: ()=>any) => (ClientConfig = {
-    ...ClientConfig,
-    refreshAuth:callBack
-});
+export const SetRefreshAuth = (callBack: () => any) =>
+         (ClientConfig = {
+           ...GetClientConfig(),
+           refreshAuth: callBack,
+         });
 
 export const SetClientConfig = (config: ClientConfigModel) => (ClientConfig = config);
 
