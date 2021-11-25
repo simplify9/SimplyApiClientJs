@@ -45,6 +45,7 @@ export const SetClientConfig = (config: ClientConfigModel) => (ClientConfig = co
 
 
 export const GetOnAuthFail = () => ClientConfig.onAuthFail;
+export const GetRefreshAuth = () => ClientConfig.refreshAuth;
 export const GetBaseUrl = () => ClientConfig.baseUrl;
 
 const GetClientConfig = () => ClientConfig;

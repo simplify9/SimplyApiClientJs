@@ -6,7 +6,7 @@ import ClientConfig from '../Models/ClientConfig';
 import IClient from '../Models/IClient';
 import RequestOptions from '../Models/RequestOptions';
 
-import GetClientConfig, { GetOnAuthFail } from './ClientConfigProvider';
+import GetClientConfig, { GetOnAuthFail, GetRefreshAuth } from './ClientConfigProvider';
 
 
 const ClientFactory = (clientConfig?: ClientConfig) => {
@@ -62,8 +62,21 @@ const ClientFactory = (clientConfig?: ClientConfig) => {
       if (error.response) {
 
         const r = error.response;
-
+        const originalRequest = error.config;
         if (401 === r.status) {
+
+          if (!originalRequest._retry)
+          {
+              originalRequest._retry = true;
+              const refreshAuth = GetRefreshAuth();
+              if (refreshAuth)
+              {
+                await refreshAuth();
+                return serverAxios(originalRequest);
+              }
+          }
+
+
           const OnAuthFail = GetOnAuthFail();
           if (OnAuthFail) { OnAuthFail!();}
         }
@@ -89,7 +102,7 @@ const ClientFactory = (clientConfig?: ClientConfig) => {
           data: null,
           error: error.message,
         };
-      }    
+      }
     },
   );
 
