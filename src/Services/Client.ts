@@ -18,6 +18,7 @@ const ClientFactory = (clientConfig?: ClientConfig) => {
 
       const clientConfiguration = clientConfig ? clientConfig : GetClientConfig()
 
+
       if (
         clientConfiguration.authType &&
         clientConfiguration.authType === 'bearer' &&
@@ -72,6 +73,7 @@ const ClientFactory = (clientConfig?: ClientConfig) => {
               if (refreshAuth)
               {
                 await refreshAuth();
+                await delay(2000);
                 return serverAxios(originalRequest);
               }
           }
@@ -139,5 +141,10 @@ const ClientFactory = (clientConfig?: ClientConfig) => {
 
   return client;
 };
+
+
+function delay(time:any) {
+  return new Promise(resolve => setTimeout(resolve, time));
+}
 
 export default ClientFactory;
